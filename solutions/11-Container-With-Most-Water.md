@@ -5,8 +5,9 @@ Given n non-negative integers a1, a2, ..., an , where each represents a point at
 
 Note: You may not slant the container and n is at least 2.
 
-## Example
+### Example
 Input: [1,8,6,2,5,4,8,3,7]
+
 Output: 49
 
 # Solutions
@@ -15,6 +16,7 @@ Space: O(1)
 
 We want to start with the largest bottom length `n` (be greedy!), which corresponds to the largest area for `n`, then compute the largest possible area for `n - 1`, `n - 2`, ...  At each iteration by moving left pointer to right, or moving right pointer to left, we make sure this it the best move from step `x` to step `x - 1`.
 
+### Python
 ```py
 def maxArea(self, height):
     left = 0
@@ -38,6 +40,7 @@ def maxArea(self, height):
     return maxArea
 ```
 
+### JS
 ```ts
 var maxArea = function(height) {
   let left = 0;

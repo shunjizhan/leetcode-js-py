@@ -3,6 +3,7 @@ Given n non-negative integers representing an elevation map where the width of e
 
 ## example
 Input: [0,1,0,2,1,0,1,3,2,1,2,1]
+
 Output: 6
 
 # Solution
@@ -25,6 +26,7 @@ Since in brute force, we can notice that we need to iterate through bars repeatl
 
 We can iterate the array twice (with memo and DP) to save the `max(left bars)` and `max(right bars)` for each item, so don't need to calculate them every time.
 
+### Python
 ```py
 def trap(self, height):
   l = len(height)
@@ -56,6 +58,7 @@ Space: O(1)
 
 Key point is we kind of genereate the `max(left bars)` and `max(right bars)` on the fly. We have to move the pointer with shorter height (suppose left pointer), since water depends on the shorter bar. So that if next height is less, we can calculate the water directly, without worrying about the other side bars. 
 
+### Python
 ```py
 def trap(self, height):
   if (len(height) < 2):
