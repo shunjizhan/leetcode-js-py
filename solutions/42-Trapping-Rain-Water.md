@@ -56,7 +56,7 @@ def trap(self, height):
 Time: O(n)
 Space: O(1)
 
-Key point is we kind of genereate the `max(left bars)` and `max(right bars)` on the fly. We have to move the pointer with shorter height (suppose left pointer), since water depends on the shorter bar. So that if next height is less, we can calculate the water directly, without worrying about the other side bars. 
+Key point is we kind of genereate the `max(left bars)` and `max(right bars)` on the fly. We have to move the pointer with shorter height, since water depends on the shorter bar. So that if next height is less, we can calculate the water directly, without worrying about the other side bars. 
 
 ### Python
 ```py
@@ -89,4 +89,39 @@ def trap(self, height):
         total += rmax - rh
   
   return total
+```
+
+### JS
+```js
+var trap = function(height) {
+  let l = 0;
+  let r = height.length;
+  let lmax = height[l];
+  let rmax = height[r];
+  let total = 0;
+  
+  while (l < r) {
+    if (height[l] < height[r]) {
+      l++;
+      let cur = height[l];
+      if (cur < lmax) {
+        water = lmax - cur;
+        total += water;
+      } else {
+        lmax = cur;
+      }
+    } else {
+      r--;
+      let cur = height[r];
+      if (cur < rmax) {
+        water = rmax - cur;
+        total += water;
+      } else {
+        rmax = cur;
+      }
+    }
+  }
+  
+  return total;
+};
 ```

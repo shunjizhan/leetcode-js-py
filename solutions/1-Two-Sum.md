@@ -27,7 +27,6 @@ Only one valid answer exists.
 
 # Solutions
 Time: O(n)
-
 Space: O(n)
 
 ### Python

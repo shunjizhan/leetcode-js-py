@@ -66,3 +66,27 @@ var maxArea = function(height) {
 };
 ```
 
+### TS
+```ts
+function maxArea(height: number[]): number {
+  let l: number = 0;
+  let r: number = height.length - 1;
+  let maxArea: number = 0;
+  
+  while (l < r) {
+    // calculate cur area and update max area
+    let lh: number = height[l];
+    let rh: number = height[r];
+    let curArea: number = (r - l) * Math.min(lh, rh);
+    maxArea = Math.max(maxArea, curArea);
+    
+    // move pointer
+    lh < rh
+      ? l++
+      : r--;
+  }
+  
+  return maxArea;
+};
+```
+
