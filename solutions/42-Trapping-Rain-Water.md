@@ -95,7 +95,7 @@ def trap(self, height):
 ```js
 var trap = function(height) {
   let l = 0;
-  let r = height.length;
+  let r = height.length - 1;
   let lmax = height[l];
   let rmax = height[r];
   let total = 0;
@@ -118,6 +118,45 @@ var trap = function(height) {
         total += water;
       } else {
         rmax = cur;
+      }
+    }
+  }
+  
+  return total;
+};
+```
+
+```ts
+function trap(height: number[]): number {  
+  let total: number = 0;
+  let l: number = 0;
+  let r: number = height.length - 1;
+  let lMax: number = height[l];
+  let rMax: number = height[r];
+  
+  while(l < r) {
+    let lh: number = height[l]
+    let rh: number = height[r];
+    let water: number;
+    let cur: number;
+
+    if (lh < rh) {
+      l++;
+      cur = height[l]
+      if (cur < lMax) {
+        water = lMax - cur;
+        total += water;
+      } else {
+        lMax = cur
+      }
+    } else {
+      r--;
+      cur = height[r]
+      if (cur < rMax) {
+        water = rMax - cur;
+        total += water;
+      } else {
+        rMax = cur
       }
     }
   }
