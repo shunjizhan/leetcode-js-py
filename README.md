@@ -1,2 +1,2 @@
-# Leetcode-Solutions
-Leetcode solutions in Python + JavaScript + TypeScript
+# Leetcode JS PY
+Leetcode solutions in Python + JavaScript
