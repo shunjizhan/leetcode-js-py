@@ -25,10 +25,10 @@ Explanation: There are three ways to climb to the top.
 
 # Solutions
 ### dp
-time: O(n)
-space: O(1)
+time: O(n)  
+space: O(1)  
 
-dp transition function: `f(x) = f(x - 1) + f(x - 2)`.
+**dp transition function**: `f(x) = f(x - 1) + f(x - 2)`.
 ```ts
 // for stair x, both stair x - 2 and x - 1 can reach this stair in 1 step, so
 // f(x) = f(x - 1) + f(x - 2)
@@ -52,6 +52,7 @@ var climbStairs = function(n) {
 ```
 
 ### formula
-time: O(1)
-space: O(1)
-since we know that `f(x) = f(x - 1) + f(x - 2)`, we can solve for `f(x) = ...`, then calculate it really fast. But this method is now that general since some formula might not be able to be solved easily.
+time: O(1)  
+space: O(1)  
+
+since we know that `f(x) = f(x - 1) + f(x - 2)`, we can solve for `f(x) = ...`, then calculate it really fast. But this method is not that general since some formula might not be able to be solved easily.
