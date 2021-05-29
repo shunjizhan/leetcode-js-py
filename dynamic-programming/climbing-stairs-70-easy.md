@@ -51,6 +51,24 @@ var climbStairs = function(n) {
 };
 ```
 
+```py
+class Solution(object):
+    def climbStairs(self, n):
+        if (n == 1):
+            return 1
+        if (n == 2):
+            return 2
+
+        prev2 = 1
+        prev1 = 2
+        for i in range (2, n):
+            cur = prev1 + prev2
+            prev2 = prev1
+            prev1 = cur
+
+        return cur
+```
+
 ### formula
 time: O(1)  
 space: O(1)  

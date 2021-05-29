@@ -45,3 +45,10 @@ a n * n matrix. For example, when string is `abcd`, we should generate something
 | d |   |   |   |   |
 
 and then fill in the blank.
+
+### 滚动数组优化
+- 2d array
+  when filling in an array from left to right, usually only need to keep track of a fixed size sliding window of this array. 
+
+- 3d matrix
+  when dilling in a matrix from left to right, usually only need to keep track of a fixed size sliding window of a couple arrays.
