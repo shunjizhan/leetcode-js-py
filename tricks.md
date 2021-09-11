@@ -31,10 +31,22 @@ return longest
 ```
 
 ## DP
-### start with the transition function
-for dp solutions, first think about what is the transition function? After getting the transition function, we already succeeded 50%.
+### idea
+DP is like a advanced version of recursion, and it optimized recursion process by saving result of duplicated computing in recursions.
 
-### dp framwork for substring
+For example, if we define f(x) = f(x - 1) + f(x - 2) + ... + f(x - 10), by doing recursion, f(x - 1) needs to compute f(x - 2), ..., f(x - 10) again.
+
+By doing DP, every f(x) is only computed once, and the result was saved for looking.
+
+Also it saves more memory than recursion, recursion is like `top => bottom => top`, which requires many levels of stacks. DP replaces the `top => bottom` process by "thinking", then implement the second half `bottom => top` directly.
+### general framework
+start with the transition function:
+1) define what is `f(x)`
+2) find transition function `f(x) = ...`
+  
+After getting the transition function, we already succeeded 50%.
+
+### framwork for substring
 a n * n matrix. For example, when string is `abcd`, we should generate something like
 
 |   | a | b | c | d |
@@ -52,3 +64,35 @@ and then fill in the blank.
 
 - 3d matrix
   when dilling in a matrix from left to right, usually only need to keep track of a fixed size sliding window of a couple arrays.
+
+## Binary Search
+### farmwork
+之前犯了一个错误，就是太meta programming的思想，总觉得不管需要找什么，只要算法够精细，那个target index永远会等于`l`或者`r`或者`mid`。其实这样是没有必要的，在复杂的场景中，可以稍微hardcode一点, keep track of another variable that reflects our target index.
+
+basic framework
+```ts
+// when l > r means we already searched everything
+while(l <= r) {
+  mid = parseInt((l + r) / 2);
+  if (cur <= nums[mid]) {
+    r = mid - 1;
+  } else {
+    l = mid + 1;
+  }
+}
+```
+
+advanced framework that needs to keep track of something else
+```ts
+let targetIndex = r;   
+while(l <= r) {
+  mid = parseInt((l + r) / 2);
+  if (cur <= nums[mid]) {
+     // at certain circumstances, calculate and update targetIndex
+    targetIndex = f(l, r, mid);   
+    r = mid - 1;
+  } else {
+    l = mid + 1;
+  }
+}
+```
